@@ -76,7 +76,7 @@ class Gift {
     constructor() {
         this.S_width = 800
         this.S_height = 600
-        this.size = .31
+        this.size = Math.random() * .16 + .16
         this.width = this.S_width * this.size
         this.height = this.S_height * this.size
         this.img = gift_img
@@ -85,7 +85,7 @@ class Gift {
         this.speedX = Math.random() * 2 - 1
         this.speedY = Math.random() + 2
         this.clicked = false
-        this.content = Math.random() * 31 + 69
+        this.content = this.size * 200
     }
     update() {
         this.x += this.speedX
