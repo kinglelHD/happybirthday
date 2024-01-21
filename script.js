@@ -42,15 +42,17 @@ class Konfetti {
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     for (var i in Konfettis) {
-        if (Konfettis[i].size <= 0.01 || Konfettis[i].y > canvas.height || Konfettis[i].y < - this.height || Konfettis[i].x > canvas.width || Konfettis[i].x < - this.width) {
+        if (Konfettis[i].size <= 0.01 || Konfettis[i].y > canvas.height || Konfettis[i].y < - Konfettis[i].height || Konfettis[i].x > canvas.width || Konfettis[i].x < - Konfettis[i].width) {
             Konfettis.splice(i, 1)
             i--
         }
     }
     for (var i in Gifts) {
-        if (Gifts[i].clicked || Gifts[i].y > canvas.height || Gifts[i].y < - this.height || Gifts[i].x > canvas.width || Gifts[i].x < - this.width) {
+        if (Gifts[i].clicked || Gifts[i].y > canvas.height || Gifts[i].y < - Gifts[i].height) {
             Gifts.splice(i, 1)
             i--
+        } else if (Gifts[i].x > canvas.width - Gifts[i].width || Gifts[i].x < 0) {
+            Gifts[i].speedX *= -1
         }
     }
     Konfettis.forEach( konfetti => {
@@ -77,8 +79,8 @@ window.addEventListener('click', function(e) {
 
 class Gift {
     constructor() {
-        this.S_width = 800
-        this.S_height = 600
+        this.S_width = 324
+        this.S_height = 456
         this.size = Math.random() * .16 + .16
         this.width = this.S_width * this.size
         this.height = this.S_height * this.size
