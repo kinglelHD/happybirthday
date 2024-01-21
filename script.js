@@ -16,6 +16,7 @@ class Konfetti {
         this.y = y
         this.speedX = Math.random() * 10 - 5
         this.speedY = Math.random() * 10 - 5
+        this.friction = .995
         this.size = size * 4
         this.angel = Math.random()
         this.width = 20
@@ -24,6 +25,8 @@ class Konfetti {
     }
     update() {
         this.size -= 0.01
+        this.speedX *= this.friction
+        this.speedY *= this.friction
         this.x += this.speedX
         this.y += this.speedY
     }
