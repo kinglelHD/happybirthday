@@ -23,7 +23,7 @@ class Konfetti {
         this.color = 'hsl(' + Math.floor(Math.random() * 360) + ', 100%, 50%)'
     }
     update() {
-        this.size -= 0.005
+        this.size -= 0.01
         this.x += this.speedX
         this.y += this.speedY
     }
@@ -81,7 +81,7 @@ class Gift {
         this.height = this.S_height * this.size
         this.img = gift_img
         this.x = Math.random() * (canvas.width - this.width)
-        this.y = 0
+        this.y = - this.height
         this.speedX = Math.random() * 2 - 1
         this.speedY = Math.random() + 2
         this.clicked = false
@@ -115,7 +115,7 @@ let mouse = new Mouse()
 
 setInterval(() => {
     Gifts.push(new Gift());
-}, 1000);
+}, 2500);
 
 function collision(r1, r2) {
     if (r1.x + r1.width >= r2.x &&
