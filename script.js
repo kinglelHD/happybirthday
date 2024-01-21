@@ -11,12 +11,12 @@ const Konfettis = []
 const Gifts = []
 
 class Konfetti {
-    constructor(x, y) {
+    constructor(x, y, size) {
         this.x = x
         this.y = y
         this.speedX = Math.random() * 10 - 5
         this.speedY = Math.random() * 10 - 5
-        this.size = 1
+        this.size = size * 4
         this.angel = Math.random()
         this.width = 20
         this.height = 40
@@ -97,7 +97,7 @@ class Gift {
     click() {   
         this.clicked = true   
         for (let i = 0; i < this.content; i++) {
-            Konfettis.push(new Konfetti(this.x + this.width * .5, this.y + this.height * .5));
+            Konfettis.push(new Konfetti(this.x + this.width * .5, this.y + this.height * .5, this.size));
         }
     }
 }
@@ -115,7 +115,7 @@ let mouse = new Mouse()
 
 setInterval(() => {
     Gifts.push(new Gift());
-}, 2500);
+}, Math.random() * 1500 + 1000);
 
 function collision(r1, r2) {
     if (r1.x + r1.width >= r2.x &&
