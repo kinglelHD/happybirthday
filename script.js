@@ -1,3 +1,8 @@
+const name = document.getElementById('name')
+name.innerText = window.location.hash.slice(1).replace('%20', ' ') || 'to you'
+
+
+
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth
