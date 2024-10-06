@@ -1,5 +1,5 @@
 const name = document.getElementById('name')
-name.innerText = window.location.hash.slice(1).replace('%20', ' ') || 'to you'
+name.innerText = window.location.hash.slice(1).replace(/%20/g, ' ') || 'to you'
 
 
 
@@ -124,7 +124,9 @@ class Mouse {
 let mouse = new Mouse()
 
 setInterval(() => {
-    Gifts.push(new Gift());
+    if (Gifts.length < 10) { 
+        Gifts.push(new Gift())
+    }
 }, Math.random() * 1500 + 1000);
 
 function collision(r1, r2) {
